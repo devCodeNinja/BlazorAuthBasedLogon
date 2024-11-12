@@ -1,0 +1,22 @@
+﻿@page "/login"
+@inject FakeAuthService AuthService
+@inject NavigationManager NavManager
+
+<h3>Login</h3>
+
+<button @onclick="LoginAsAdmin">Login as Admin</button>
+<button @onclick="LoginAsUser">Login as User</button>
+
+@code {
+    private async Task LoginAsAdmin()
+    {
+        await AuthService.LoginAsAdmin();
+        NavManager.NavigateTo("/");
+    }
+
+    private async Task LoginAsUser()
+    {
+        await AuthService.LoginAsUser();
+        NavManager.NavigateTo("/");
+    }
+}
